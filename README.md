@@ -2,7 +2,7 @@
 
 
 ## Requirements:
-1. Given raw OLTP data of user behaviours, perform transformation to make it easy to do analytics on it.
+1. Given raw OLTP data of user behaviour, perform transformation to make it easy to do analytics on it.
 2. You can use any type of infra to setup to perform the task
 3. Goal is to learn data pipeline.
 
