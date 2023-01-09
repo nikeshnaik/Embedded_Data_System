@@ -36,26 +36,26 @@ def createIntermediateTable(intermediate_state):
 
 
 
-# def mergeUserDataWithIntermediate(intermediate_state, user_data):
+def mergeUserDataWithIntermediate(intermediate_state, user_data):
 
-#     with SQLiteConn(intermediate_state) as intermediate_state_cursor:
+    with SQLiteConn(intermediate_state) as intermediate_state_cursor:
 
-#         intermediate_state.execute("DROP TABLE IF EXISTS USER_PURCHASE;")
+        intermediate_state_cursor.execute("DROP TABLE IF EXISTS USER_PURCHASE;")
 
-#         ## Todo: Create user purchase table in intermediate table, insert all records below
-#         intermediate_state.execute("CREATE TABLE IF NOT EXISTS USER_PURCHASE ()")
+        ## Todo: Create user purchase table in intermediate table, insert all records below
+        intermediate_state_cursor.execute("CREATE TABLE IF NOT EXISTS USER_PURCHASE (invoice_number TEXT, stock_code TEXT, details TEXT, quantity INTEGER, invoice_date DATE, unite_price TEXT, customer_id INTEGER, zipcode TEXT )")
 
-#         with SQLiteConn(user_data) as user_data_cursor:
+        with SQLiteConn(user_data) as user_data_cursor:
 
+            user_data_cursor.execute("select * from user_purchase;")
 
-#             user_data_cursor.execute("select * from user_purchase;")
-
-#             while record:=user_data_cursor.fetchone():
-
-#                 intermediate_state.execute(f"""
-
-#                         INSERT INTO  
-#                 """)
+            while record:=user_data_cursor.fetchone():
+                print(record)
+                insert_query = f"""
+                        INSERT INTO USER_PURCHASE (invoice_number, stock_code, details, quantity,invoice_date, unite_price, customer_id, zipcode) VALUES("{record[0]}","{record[1]}","{record[2]}","{record[3]}","{record[4]}","{record[5]}","{record[6]}","{record[7]}")
+                """
+                print(insert_query)
+                intermediate_state_cursor.execute(insert_query)
             
 
 
@@ -69,7 +69,7 @@ if __name__ == "__main__":
 
     # convertingJsonToSQLTable(customer_reviews_file, intermediate_state)
 
-    # mergeUserDataWithIntermediate(intermediate_state, user_data)
+    mergeUserDataWithIntermediate(intermediate_state, user_data)
 
 
 
