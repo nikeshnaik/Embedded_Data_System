@@ -1,13 +1,10 @@
 from utility.helpers import DuckDBConn, SQLiteConn
 
 
-def createUserBehaviourMetricTable(dwh_path):
+def transform(dwh_path, data_lake_file):
 
     with DuckDBConn(dwh_path) as cursor:
         result = cursor.execute("CREATE OR REPLACE TABLE user_behaviour_metric(customer_id integer, amount_spent double, review_score integer, review_count integer, last_update date);")
-        print(result.fetchall())
-
-def transform(dwh_path, data_lake_file):
 
     with SQLiteConn(data_lake_file) as data_lake_cursor:
 
@@ -52,8 +49,6 @@ if __name__ == "__main__":
     data_warehouse_file = "data_warehouse/memory_warehouse.duckdb"
     data_lake_file = "data_lake/stage/intermediate_state.db"
 
-
-    createUserBehaviourMetricTable(data_warehouse_file)
     transform(data_warehouse_file, data_lake_file)
 
 

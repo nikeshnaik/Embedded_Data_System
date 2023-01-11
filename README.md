@@ -25,8 +25,14 @@
 
 ## Tasks:
 
-1. [ ] Local directory will acts as data lake, where data given by customer will dumped to transform
-2. [ ] DuckDb to store after transform.
-3. [ ] Make Cron Job configurable, rather than a subprocess.
-4. [ ] Deploy metabase on docker.
+1. [x] Local directory will acts as data lake, where data given by customer will dumped to transform
+2. [x] DuckDb to store after transform.
+3. [x] use schedule library to execute data pipeline at predefined time.
+4. [x] Deploy metabase on docker.
 5. [ ] Connect DuckDb to metabase.
+
+
+## Recording of Scheduler
+
+[label](scheduler_executing_pipeline.mov)
+

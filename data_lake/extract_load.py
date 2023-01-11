@@ -59,19 +59,24 @@ def mergeUserDataWithIntermediate(intermediate_state, user_data):
             
 
 
+def extract_load_task(customer_reviews_file, user_data, intermediate_state):
+    createIntermediateTable(intermediate_state)
+    convertingJsonToSQLTable(customer_reviews_file, intermediate_state)
+    mergeUserDataWithIntermediate(intermediate_state, user_data) 
+
 if __name__ == "__main__":
 
     customer_reviews_file = "data_lake/raw/Classified_movie_review.json"
     user_data = "data_lake/raw/user_purchase.sqlite"
     intermediate_state = "data_lake/stage/intermediate_state.db"
 
-    # createIntermediateTable(intermediate_state)
+    # # createIntermediateTable(intermediate_state)
 
-    # convertingJsonToSQLTable(customer_reviews_file, intermediate_state)
+    # # convertingJsonToSQLTable(customer_reviews_file, intermediate_state)
 
-    mergeUserDataWithIntermediate(intermediate_state, user_data)
+    # mergeUserDataWithIntermediate(intermediate_state, user_data)
 
-
+    
 
 
 
