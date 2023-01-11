@@ -34,5 +34,5 @@
 
 ## Recording of Scheduler
 
-[label](scheduler_executing_pipeline.mov)
+<video src='scheduler_executing_pipeline.mov' controls autoplay loop/>
 
